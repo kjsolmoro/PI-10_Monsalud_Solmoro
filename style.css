@@ -255,3 +255,33 @@ footer p {
     color: #8c8676;
     margin-top: 2rem;
 }
+
+/* ==========================================================================
+   7. Modifiers 
+   ========================================================================== */
+
+/* --- For the scientist page --- */
+#directory.grid2x2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 850px !important; 
+    margin: 0 auto !important; 
+}
+
+@media (max-width: 768px) {
+    #directory.grid-2x2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+#scientist-div {
+    display: flex;
+    gap: 15px;
+}
+
+.scientist-info {
+    color: #e6dfd3 !important;
+    background-color: #4a5d48;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
