@@ -216,48 +216,9 @@ main {
     transform: translateY(0);
 }
 
-/* ==========================================================================
-   6. Footer & Citations
-   ========================================================================== */
-footer {
-    background-color: transparent;
-    padding: 3rem 2rem 2rem 2rem;
-    margin-top: 2rem;
-    border-top: 1px solid #d4cdbb;
-}
-
-footer hr {
-    display: none; /* Removed since border-top handles this cleaner */
-}
-
-footer h3 {
-    color: #d4cdbb;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-footer ul {
-    list-style-position: inside;
-    margin-bottom: 2rem;
-}
-
-footer ul li {
-    font-size: 0.95rem;
-    color: #8c8676;
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
-}
-
-footer p {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #8c8676;
-    margin-top: 2rem;
-}
 
 /* ==========================================================================
-   7. Modifiers 
+   6. Modifiers 
    ========================================================================== */
 
 /* --- For the scientist page --- */
@@ -658,4 +619,45 @@ body{
     font-size: 0.95rem; 
     line-height: 1.6; 
     font-family: var(--sans);
+}
+
+/* ==========================================================================
+   Footer & Citations
+   ========================================================================== */
+footer {
+    background-color: transparent;
+    padding: 3rem 2rem 2rem 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid #d4cdbb;
+}
+
+footer hr {
+    display: none; /* Removed since border-top handles this cleaner */
+}
+
+footer h3 {
+    color: #d4cdbb;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+footer ul {
+    list-style-position: inside;
+    margin-bottom: 2rem;
+}
+
+footer ul li {
+    font-size: 0.95rem;
+    color: #8c8676;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #8c8676;
+    margin-top: 2rem;
 }
