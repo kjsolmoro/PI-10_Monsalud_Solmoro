@@ -621,6 +621,7 @@ body{
     font-family: var(--sans);
 }
 
+
 /* ==========================================================================
    Footer & Citations
    ========================================================================== */
@@ -632,7 +633,7 @@ footer {
 }
 
 footer hr {
-    display: none; /* Removed since border-top handles this cleaner */
+    display: none; 
 }
 
 footer h3 {
