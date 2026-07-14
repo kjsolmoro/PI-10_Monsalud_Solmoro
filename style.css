@@ -84,7 +84,7 @@ main {
 }
 
 #overview h2 {
-    color: #2b3a2a;
+    color: #c5bfae;
     margin-bottom: 1rem;
     font-size: 1.75rem;
     font-weight: 500;
@@ -92,7 +92,7 @@ main {
 
 #overview p {
     font-size: 1.1rem;
-    color: #4a5d48;
+    color: #c5bfae;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -231,7 +231,7 @@ footer hr {
 }
 
 footer h3 {
-    color: #2b3a2a;
+    color: #d4cdbb;
     margin-bottom: 1rem;
     font-size: 1.2rem;
     font-weight: 600;
@@ -244,7 +244,7 @@ footer ul {
 
 footer ul li {
     font-size: 0.95rem;
-    color: #4a5d48;
+    color: #8c8676;
     margin-bottom: 0.75rem;
     line-height: 1.6;
 }
@@ -348,6 +348,8 @@ body{
 .ph span{position:relative;z-index:1;max-width:80%;line-height:1.5;opacity:.85}
 .ph small{display:block;font-size:9px;opacity:.55;margin-top:6px;letter-spacing:.2em}
 
+
+
 /* ============ HERO ============ */
 .hero{
   aspect-ratio: 16/9;
@@ -385,31 +387,91 @@ body{
   z-index:1;
 }
 
-/* ============ STRIP: mini carousel ============ */
-.strip{
-  display:grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap:10px;
+/* ==========================================================================
+   Curriculum Hover Cards
+   ========================================================================== */
+.curriculum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
 }
-.strip .tile{
-  aspect-ratio: 3/4;
-  border-radius:4px;overflow:hidden;
-  background:var(--panel);
-  position:relative;
+
+.subject-card {
+    position: relative;
+    background: #1a2620; /* Solid vintage dark green */
+    border-radius: 6px;
+    height: 180px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease;
+    cursor: default;
 }
-.strip .tile .ph{position:absolute;inset:0;font-size:9px}
-.strip .tile.label-tile{
-  display:flex;align-items:center;justify-content:center;
-  background: linear-gradient(160deg, #16231d, #0a1310);
-  padding:10px;
+
+.subject-card:hover {
+    transform: translateY(-6px); /* Slight lift effect */
 }
-.strip .tile .label-inner{
-  font-family:var(--serif);font-style:italic;color:var(--ink);
-  font-size:16px;line-height:1.1;text-align:center;
+
+.subject-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--accent); /* Uses your root cream variable */
+    z-index: 1;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 0 1rem;
 }
-.strip .tile .label-inner small{
-  display:block;font-family:var(--sans);font-style:normal;
-  text-transform:uppercase;letter-spacing:.25em;font-size:8px;color:var(--muted);margin-bottom:6px;
+
+/* Hide the main title when hovered */
+.subject-card:hover .subject-title {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.subject-overlay {
+    position: absolute;
+    inset: 0;
+    background: #2b3a2a; 
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 2;
+}
+
+.subject-card:hover .subject-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Upward sliding animation for the description */
+.subject-overlay p {
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transform: translateY(15px);
+    transition: transform 0.4s ease;
+}
+
+.subject-card:hover .subject-overlay p {
+    transform: translateY(0);
+}
+
+.hero .ph img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 /* ============ FEATURE ROW (image + type) ============ */
@@ -435,6 +497,41 @@ body{
   font-size:15px;line-height:1.65;color:var(--ink-dim);max-width:34ch;
 }
 .feature .side-img{border-radius:6px;overflow:hidden;position:relative}
+
+.feature .ph.side-img {
+    padding: 0; /* Removes the inner padding trapping the image */
+}
+
+.feature .ph.side-img span {
+    position: static; /* Allows the image to position itself relative to the main container */
+    max-width: 100%;  /* Removes the 80% width restriction */
+}
+
+.feature .ph.side-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: 1;
+    border-radius: 6px;
+}
+
+
+.feature .ph.side-img small {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    background-color: rgba(10, 15, 13, 0.85); 
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: var(--ink-dim);
+    width: max-content;
+    text-align: center;
+}
 
 /* ============ TRIPLE ROW ============ */
 .triple{
@@ -503,4 +600,62 @@ body{
 @media (max-width: 480px){
   .strip{grid-template-columns: repeat(2, 1fr)}
   .triple, .closing{grid-template-columns:1fr}
+}
+
+/* ==========================================================================
+   Legacy & Progressive Section (Educator Page)
+   ========================================================================== */
+.legacy-section {
+    background: linear-gradient(160deg, #10201a, #071210); 
+    border-radius: 6px; 
+    padding: 3rem 2rem; 
+    text-align: center; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.legacy-quote {
+    margin-bottom: 2.5rem;
+}
+
+.legacy-quote h3 {
+    font-family: var(--serif); 
+    font-style: italic; 
+    font-weight: 400; 
+    color: var(--ink); 
+    font-size: clamp(28px, 3vw, 42px); 
+    line-height: 1.2;
+}
+
+.legacy-quote h3 em {
+    color: #f5e8c9;
+}
+
+.legacy-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px; 
+    text-align: left;
+}
+
+.legacy-card {
+    background: rgba(26, 38, 32, 0.6); 
+    padding: 1.5rem; 
+    border-radius: 6px; 
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.legacy-card strong {
+    color: #f5e8c9; 
+    display: block; 
+    margin-bottom: 10px; 
+    font-size: 1.15rem; 
+    font-family: var(--serif); 
+    font-style: italic;
+}
+
+.legacy-card p {
+    color: var(--ink-dim); 
+    font-size: 0.95rem; 
+    line-height: 1.6; 
+    font-family: var(--sans);
 }
